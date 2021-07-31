@@ -20,6 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Natvis Include="MyStlVis.natvis" />
+    <Natvis Include="MyVis.natvis" />
   </ItemGroup>
 </Project>
