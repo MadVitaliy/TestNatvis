@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<Type Name="CNameList">
+		<DisplayString Condition="m_list.size() &gt; 3">{{ size={m_list.size()} }}</DisplayString>
+		<Expand HideRawView="true">
+			<IndexListItems>
+				<Size>m_list.size()</Size>
+				<ValueNode>*m_list._Mypair._Myval2._Myfirst[$i]</ValueNode>
+			</IndexListItems>
+
+		</Expand>
+	</Type>
+	
+	<Type Name="CName">
+		<DisplayString Condition="m_first.isShortString() &amp;&amp; m_last.isShortString()">{m_first._Mypair._Myval2._Bx._Buf,sb} {m_last._Mypair._Myval2._Bx._Buf,sb}</DisplayString>
+		<DisplayString Condition="m_first.isLongString() &amp;&amp; m_last.isShortString()">{m_first._Mypair._Myval2._Bx._Ptr,sb} {m_last._Mypair._Myval2._Bx._Buf,sb}</DisplayString>
+		<DisplayString Condition="m_first.isShortString() &amp;&amp; m_last.isLongString()">{m_first._Mypair._Myval2._Bx._Buf,sb} {m_last._Mypair._Myval2._Bx._Ptr,sb}</DisplayString>
+		<DisplayString Condition="m_first.isLongString() &amp;&amp; m_last.isLongString()">{m_first._Mypair._Myval2._Bx._Ptr,sb} {m_last._Mypair._Myval2._Bx._Ptr,sb}</DisplayString>
+		<Expand HideRawView="true">
+			<Item Condition="m_first.isShortString()" Name="First">m_first._Mypair._Myval2._Bx._Buf,sb</Item>
+			<Item Condition="m_first.isLongString()" Name="First">m_first._Mypair._Myval2._Bx._Ptr,sb</Item>
+			<Item Condition="m_last.isShortString()" Name="Last">m_last._Mypair._Myval2._Bx._Buf,sb</Item>
+			<Item Condition="m_last.isLongString()" Name="Last">m_last._Mypair._Myval2._Bx._Ptr,sb</Item>
+		</Expand>
+	</Type>
+
+	<Type Name="CircularList">
+		<Expand HideRawView="true">
+			<LinkedListItems>
+				<HeadPointer>m_pFirst</HeadPointer>
+				<NextPointer>m_pNext</NextPointer>
+				<ValueNode>m_value</ValueNode>
+			</LinkedListItems>
+		</Expand>
+	</Type>
+
+
+	
+	<Type Name="std::set&lt;*&gt;">
+		<DisplayString Condition="_Mypair._Myval2._Myval2._Mysize &gt; 10">{{ size={_Mypair._Myval2._Myval2._Mysize} }}"</DisplayString>
+		<Expand>
+			<TreeItems>
+				<Size>_Mypair._Myval2._Myval2._Mysize</Size>
+				<HeadPointer>_Mypair._Myval2._Myval2._Myhead-&gt;_Parent</HeadPointer>
+				<LeftPointer>_Left</LeftPointer>
+				<RightPointer>_Right</RightPointer>
+				<ValueNode Condition="_Isnil == 0">_Myval</ValueNode>
+			</TreeItems>
+		</Expand>
+
+	</Type>
+	
+</AutoVisualizer>
